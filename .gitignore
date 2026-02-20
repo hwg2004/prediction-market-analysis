@@ -1,2 +1,16 @@
+# environment variables
+*.env
 .env
+
+# Kalshi private keys
+*.pem
+*.key
 Main Key.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# data files (optional)
+*.db
+*.csv
