@@ -46,4 +46,4 @@ def get_market(client, ticker):
 
 if __name__ == "__main__":
     client, balance = configure_client(PRIVATE_KEY_PATH)
-    get_market(client, "US2024PRESIDENTDEMOCRATICPRIMARY")
+    get_market(client, "Kenya Open Winner?")
