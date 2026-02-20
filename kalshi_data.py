@@ -1,21 +1,16 @@
-import time
-import requests
-import csv
+import time, requests, csv, os
 import pandas as pd
-from kalshi_python_sync import Configuration, KalshiClient
-import os
 from dotenv import load_dotenv
+from pprint import pprint
 
-#===================== Config ====================
+import kalshi_python
+from kalshi_python.models.get_market_response import GetMarketResponse
+from kalshi_python.rest import ApiException
+from kalshi_python_sync import Configuration, KalshiClient
+
+#===================== Config ==============================
 load_dotenv()
 API_KEY_ID = os.getenv("KALSHI_KEY_ID")
-
-if not API_KEY_ID:
-    raise RuntimeError(
-        "KALSHI_KEY_ID is not set. "
-        "Set it in your shell or in a .env file before running."
-    )
-
 PRIVATE_KEY_PATH = "kalshi.pem"
 
 def configure_client(path: str):
@@ -37,5 +32,18 @@ def configure_client(path: str):
 
 #===========================================================
 
+#===================== Get Market ==========================
+def get_market(client, ticker):
+    try:
+        market = client.get_market(ticker)
+        print("The response of MarketsApi->get_market:\n")
+        pprint(market)
+    except Exception as e:
+        print(f"Error fetching market: {e}")
+        return None
+#===========================================================
+
+
 if __name__ == "__main__":
     client, balance = configure_client(PRIVATE_KEY_PATH)
+    get_market(client, "US2024PRESIDENTDEMOCRATICPRIMARY")
