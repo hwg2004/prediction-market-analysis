@@ -5,7 +5,6 @@
 # Kalshi private keys
 *.pem
 *.key
-Main Key.txt
 
 # Python
 __pycache__/
