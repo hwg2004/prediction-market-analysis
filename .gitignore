@@ -12,4 +12,9 @@ __pycache__/
 
 # data files (optional)
 *.db
-*.csv
+data/orders_log.csv
+data/candlesticks/
+data/settled_markets.csv
+
+# logs
+logs/
